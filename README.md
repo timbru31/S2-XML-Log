@@ -30,7 +30,7 @@ Here are two short examples you can use for testing
 ```` xml
 <soa"
 [aRandomCodeGoesHere] Soap: << "p:Envelope xmlns:soap="http://www.w3.org/2001/12/soap-envelope"><soap:Body><m:getStockPrice xmlns:m="http://www.w3.org/2001/12/soap-encoding"><m:stockName>IBM</m:stockName></m:getStockPrice></soap:Body></soap:Envelope>
-```` xml
+````
 
 ## Issues? Comments? PR? Support?
 Just create an issue here and I'll take a look at it and try my best to help you out! :)
