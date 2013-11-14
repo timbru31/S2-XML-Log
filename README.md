@@ -17,6 +17,7 @@ This plugin is based on [Indentxml from alek-sys](https://github.com/alek-sys/su
 
 - Variant A
   - Press CTRL + K and then CTRL + D
+- Variant B
   - Use Selection -> Format -> S2 XML Log
 
 ## Examples
