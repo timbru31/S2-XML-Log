@@ -1,3 +1,6 @@
+Mon 18 Nov 2013
+* Added cases for missing closing bracket (>) or left quotation mark (")
+
 Thu Nov 14 2013
 * Initial GitHub commit
 * Cleanup
