@@ -4,7 +4,6 @@ import re
 from xml.dom.minidom import *
 from os.path import basename
 import sys
-sys.path.append("/usr/lib/python2.6/lib-dynload/")
 
 class FormatlogCommand(sublime_plugin.TextCommand):
     def is_enabled(self):
@@ -43,6 +42,12 @@ class FormatlogCommand(sublime_plugin.TextCommand):
     def formatlog(self, s):
         # convert to utf
         s = s.encode("utf-8")
+        # Strip newlines
+        s = s.replace(b'\\n', b'')
+        s = s.replace(b'\\r', b'')
+        # Remove weird one character long names & additonal [] brackets?
+        found_reg = re.compile(b'Soap: << [\"][\[]?[\\]?[a-zA-Z0-9][\]]?[\"]', re.DOTALL)
+        s = re.sub(found_reg, b'Soap: << ""', s)
         found_reg = re.compile(b'\n', re.DOTALL)
         s = re.sub(found_reg, b'',s)
         found_reg = re.compile(b'"?([a-zA-Z0-9\:\,\s\.]*)(\[[a-zA-Z0-9]+\]? )?Soap: << "', re.DOTALL)
