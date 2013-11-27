@@ -57,10 +57,15 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         s = re.compile(b'>\s+([^\s])', re.DOTALL).sub(b'>\g<1>', s)
         # replace tags to convince minidom process cdata as text
         s = s.replace(b'<![CDATA[', b'%CDATAESTART%').replace(b']]>', b'%CDATAEEND%')
+        # Ends with "? Remove it
         if (s.endswith(b'"')):
             s = s[:-1]
+        # Doesn't end with >? Add it
         if not (s.endswith(b'>')):
             s += b'>'
+        # Doesn't start with <? Add it
+        if not (s.startswith(b'<')):
+            s = b'<' + s
         try:
             s = parseString(s).toprettyxml()
         except Exception as e:

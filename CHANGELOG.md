@@ -1,3 +1,6 @@
+Wed 27 Nov 2013
+* Added case for missing opening bracket (<)
+
 Thu 21 Nov 2013
 * Added fix/workaround for new lines and weird one line characters
 
