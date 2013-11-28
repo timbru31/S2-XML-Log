@@ -50,7 +50,7 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         s = re.sub(found_reg, b'Soap: << ""', s)
         found_reg = re.compile(b'\n', re.DOTALL)
         s = re.sub(found_reg, b'',s)
-        found_reg = re.compile(b'"?([a-zA-Z0-9\:\,\s\.]*)(\[[a-zA-Z0-9]+\]? )?Soap: << "', re.DOTALL)
+        found_reg = re.compile(b'"?([a-zA-Z0-9\:\,\s\.]*)(\[[a-zA-Z0-9]+\])[ |]?Soap: << "', re.DOTALL)
         s = re.sub(found_reg, b'',s)
         xmlheader = re.compile(b"<\?.*\?>").match(s)
         # convert to plain string without indents and spaces

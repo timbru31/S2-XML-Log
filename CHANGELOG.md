@@ -1,3 +1,6 @@
+Thu 28 Nov 2013
+* Allow [aRandomCode] Soap ... and [aRandomCode]Soap
+
 Wed 27 Nov 2013
 * Added case for missing opening bracket (<)
 
