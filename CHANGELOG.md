@@ -1,3 +1,7 @@
+Wed 04 Dec 2013
+* Simplify the code :)
+* Add support for >> brackets that occured in a logfile
+
 Thu 28 Nov 2013
 * Allow [aRandomCode] Soap ... and [aRandomCode]Soap
 

@@ -43,27 +43,30 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         # convert to utf
         s = s.encode("utf-8")
         # Strip newlines
-        s = s.replace(b'\\n', b'')
-        s = s.replace(b'\\r', b'')
-        # Remove weird one character long names & additonal [] brackets?
-        found_reg = re.compile(b'Soap: << [\"][\[]?[\\]?[a-zA-Z0-9][\]]?[\"]', re.DOTALL)
+        s = s.replace(b'\n', b'')
+        s = s.replace(b'\r', b'')
+        # Strip pseudo newlines
+        s = s.replace(b'[\\n]', b'')
+        s = s.replace(b'[\\r]', b'')
+        # Remove weird one/two character long names
+        found_reg = re.compile(b'Soap: [<|>]{2} "\w{0,2}"', re.DOTALL)
         s = re.sub(found_reg, b'Soap: << ""', s)
-        found_reg = re.compile(b'\n', re.DOTALL)
+        # Remove soap code
+        found_reg = re.compile(b'"?([a-zA-Z0-9\:\,\s\.]*)(\[[a-zA-Z0-9]+\])[ |]?Soap: [<|>]{2} "', re.DOTALL)
         s = re.sub(found_reg, b'',s)
-        found_reg = re.compile(b'"?([a-zA-Z0-9\:\,\s\.]*)(\[[a-zA-Z0-9]+\])[ |]?Soap: << "', re.DOTALL)
-        s = re.sub(found_reg, b'',s)
+        # XML Header
         xmlheader = re.compile(b"<\?.*\?>").match(s)
         # convert to plain string without indents and spaces
         s = re.compile(b'>\s+([^\s])', re.DOTALL).sub(b'>\g<1>', s)
         # replace tags to convince minidom process cdata as text
         s = s.replace(b'<![CDATA[', b'%CDATAESTART%').replace(b']]>', b'%CDATAEEND%')
-        # Ends with "? Remove it
+        # Ends with a quotation mark? Remove it
         if (s.endswith(b'"')):
             s = s[:-1]
-        # Doesn't end with >? Add it
+        # Doesn't end with a bracket (>)? Add it
         if not (s.endswith(b'>')):
             s += b'>'
-        # Doesn't start with <? Add it
+        # Doesn't start with a bracket(<)? Add it
         if not (s.startswith(b'<')):
             s = b'<' + s
         try:
