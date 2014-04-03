@@ -63,6 +63,9 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         # Ends with a quotation mark? Remove it
         if (s.endswith(b'"')):
             s = s[:-1]
+        # Starts with a quotation mark? Remove it
+        if (s.startswith(b'"')):
+            s = s[1:]
         # Doesn't end with a bracket (>)? Add it
         if not (s.endswith(b'>')):
             s += b'>'

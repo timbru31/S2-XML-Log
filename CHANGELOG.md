@@ -1,3 +1,6 @@
+Thu 03 Apr 2014
+* Added case for starting quotation mark (")
+
 Wed 04 Dec 2013
 * Simplify the code :)
 * Add support for >> brackets that occured in a logfile
