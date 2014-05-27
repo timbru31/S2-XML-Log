@@ -16,6 +16,8 @@ This plugin is based on [Indentxml from alek-sys](https://github.com/alek-sys/su
 ~~Remember that the SOAP log needs to end WITHOUT a quotation mark (")!!~~
 Fixed :)
 
+**The syntax of the file needs to be XML or Plain Text!**
+
 - Variant A
   - Press CTRL + K and then CTRL + D
 - Variant B

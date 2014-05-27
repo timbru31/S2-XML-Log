@@ -1,20 +1,20 @@
 [
-    {
-        "id": "selection",
-        "caption": "Selection",
+  {
+    "id": "selection",
+    "caption": "Selection",
+    "children":
+    [
+      {
+        "id": "format",
+        "caption": "Format",
         "children":
         [
-            {
-                "id": "format",
-                "caption": "Format",
-                "children":
-                [
-                    {
-                        "caption": "S2 XML LOG",
-                        "command": "formatlog"
-                    }
-                ]
-            }
+          {
+            "caption": "S2 XML LOG",
+            "command": "formatlog"
+          }
         ]
-    }
+      }
+    ]
+  }
 ]
