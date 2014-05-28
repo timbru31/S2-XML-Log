@@ -5,7 +5,7 @@ This plugin is based on [Indentxml from alek-sys](https://github.com/alek-sys/su
 *This installation assumes you are using Sublime Text 3, if you are using the old Sublime Text 2 version please adjust paths to the matching Sublime Text 2 paths!*
 
 - Clone project from [Github](https://github.com/xGhOsTkiLLeRx/S2-XML-Log.git) into the user's Packages folder.
-  - On Mac, "~/Library/Application Support/Sublime Text 3/Packages/"
+  - On Mac, "~/Library/Application\ Support/Sublime\ Text\ 3/Packages/"
   - On Windows, "C:\Users\\{user}\AppData\Roaming\Sublime Text 3\Packages"
   - On Linux, ~/.config/sublime-text-3/Packages/
 

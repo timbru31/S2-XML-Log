@@ -79,7 +79,7 @@ class FormatlogCommand(sublime_plugin.TextCommand):
             namespace = re.compile(b'xmlns:\w*=')
             if namespace.search(s) is None:
                 # Add a fallback namespace
-                fallbackNamespace = b'xmlns:soap="http://www.w3.org/2001/12/soap-envelope"'
+                fallbackNamespace = b' xmlns:soap="http://www.w3.org/2001/12/soap-envelope"'
                 index = s.index(b":")
                 # First part until the :
                 firstPart = s[0:index]
