@@ -1,3 +1,6 @@
+Wed 28 May 2014
+* If no namespace is declared and the namespace is used, fallback to our soap namespace (fixed #2)
+
 Thu 03 Apr 2014
 * Added case for starting quotation mark (")
 

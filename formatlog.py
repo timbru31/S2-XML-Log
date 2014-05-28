@@ -40,7 +40,7 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         view.set_syntax_file("Packages/XML/XML.tmLanguage")
 
     def formatlog(self, s):
-        # convert to utf
+        # convert to utf-8 (makes it a bytearray and we need the b flag in re)
         s = s.encode("utf-8")
         # Strip newlines
         s = s.replace(b'\n', b'')
@@ -72,6 +72,27 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         # Doesn't start with a bracket(<)? Add it
         if not (s.startswith(b'<')):
             s = b'<' + s
+        # Check if a namespace is used and see if a namespace declaration is given
+        namespace = re.compile(b'\w*:\w*')
+        if namespace.search(s) is not None:
+            # Check if namespace (xmlns) is defined
+            namespace = re.compile(b'xmlns:\w*=')
+            if namespace.search(s) is None:
+                # Add a fallback namespace
+                fallbackNamespace = b'xmlns:soap="http://www.w3.org/2001/12/soap-envelope"'
+                index = s.index(b":")
+                # First part until the :
+                firstPart = s[0:index]
+                # Second part with :
+                lastPart = s[index:]
+                # Now find the first >
+                index = lastPart.index(b">")
+                # Add the fallback right beforethe >
+                middlePart = lastPart[0:index] + fallbackNamespace
+                # Update the lastpart
+                lastPart = lastPart[index:]
+                # Restructure s with firstPart, middlePart (with NS) and lastPart
+                s = firstPart + middlePart + lastPart
         try:
             s = parseString(s).toprettyxml()
         except Exception as e:
