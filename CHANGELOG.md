@@ -1,5 +1,7 @@
 Fri 13 June 2014
 * Allow up to three garbage characters
+* Show error in alert window
+* Write string into window to simplify the error search
 
 Wed 28 May 2014
 * If no namespace is declared and the namespace is used, fallback to our soap namespace (fixed #2)

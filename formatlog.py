@@ -96,8 +96,8 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         try:
             s = parseString(s).toprettyxml()
         except Exception as e:
-            sublime.active_window().run_command("show_panel", {"panel": "console", "toggle": True})
-            raise e
+            sublime.error_message(str(e))
+            return s.decode("utf-8")
         # remove line breaks
         s = re.compile('>\n\s+([^<>\s].*?)\n\s+</', re.DOTALL).sub('>\g<1></', s)
         # restore cdata
