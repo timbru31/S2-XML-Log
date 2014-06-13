@@ -48,8 +48,8 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         # Strip pseudo newlines
         s = s.replace(b'[\\n]', b'')
         s = s.replace(b'[\\r]', b'')
-        # Remove weird one/two character long names
-        found_reg = re.compile(b'Soap: [<|>]{2} "\w{0,2}"', re.DOTALL)
+        # Remove weird one/two/three character long names
+        found_reg = re.compile(b'Soap: [<|>]{2} "\w{0,3}"', re.DOTALL)
         s = re.sub(found_reg, b'Soap: << ""', s)
         # Remove soap code
         found_reg = re.compile(b'"?([a-zA-Z0-9\:\,\s\.]*)(\[[a-zA-Z0-9]+\])[ |]?Soap: [<|>]{2} "', re.DOTALL)

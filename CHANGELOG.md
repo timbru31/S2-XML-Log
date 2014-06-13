@@ -1,3 +1,6 @@
+Fri 13 June 2014
+* Allow up to three garbage characters
+
 Wed 28 May 2014
 * If no namespace is declared and the namespace is used, fallback to our soap namespace (fixed #2)
 
