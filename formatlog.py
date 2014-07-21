@@ -52,7 +52,7 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         found_reg = re.compile(b'Soap: [<|>]{2} "\w{0,3}"', re.DOTALL)
         s = re.sub(found_reg, b'Soap: << ""', s)
         # Remove soap code
-        found_reg = re.compile(b'"?([a-zA-Z0-9\:\,\s\.]*)(\[[a-zA-Z0-9]+\])[ |]?Soap: [<|>]{2} "', re.DOTALL)
+        found_reg = re.compile(b'"?([a-zA-Z0-9\:\,\s\.]*)(\[[a-zA-Z0-9]+\])?[ |]?Soap: [<|>]{2} "', re.DOTALL)
         s = re.sub(found_reg, b'',s)
         # XML Header
         xmlheader = re.compile(b"<\?.*\?>").match(s)

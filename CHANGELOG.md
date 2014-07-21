@@ -1,3 +1,6 @@
+Mon 21 July 2014
+* Fixed for usage without [RandomCode] - occurrence is now optional
+
 Fri 13 June 2014
 * Allow up to three garbage characters
 * Show error in alert window
