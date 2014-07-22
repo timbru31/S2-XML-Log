@@ -17,7 +17,7 @@ class FormatlogCommand(sublime_plugin.TextCommand):
             return False
         syntax = view.settings().get('syntax')
         language = basename(syntax).replace('.tmLanguage', '').lower() if syntax != None else "plain text"
-        return ((language == "xml") or (language == "plain text"))
+        return language == "xml" or language == "plain text"
 
     def run(self, edit):
         """
@@ -61,16 +61,16 @@ class FormatlogCommand(sublime_plugin.TextCommand):
         # replace tags to convince minidom process cdata as text
         s = s.replace(b'<![CDATA[', b'%CDATAESTART%').replace(b']]>', b'%CDATAEEND%')
         # Ends with a quotation mark? Remove it
-        if (s.endswith(b'"')):
+        if s.endswith(b'"'):
             s = s[:-1]
         # Starts with a quotation mark? Remove it
-        if (s.startswith(b'"')):
+        if s.startswith(b'"'):
             s = s[1:]
         # Doesn't end with a bracket (>)? Add it
-        if not (s.endswith(b'>')):
+        if not s.endswith(b'>'):
             s += b'>'
         # Doesn't start with a bracket(<)? Add it
-        if not (s.startswith(b'<')):
+        if not s.startswith(b'<'):
             s = b'<' + s
         # Check if a namespace is used and see if a namespace declaration is given
         namespace = re.compile(b'\w*:\w*')

@@ -1,3 +1,7 @@
+Tue 22 July 2014
+* Removed package-metadata.json
+* Added key bindings section in Preferences
+
 Mon 21 July 2014
 * Fixed for usage without [RandomCode] - occurrence is now optional
 
