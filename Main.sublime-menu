@@ -12,7 +12,7 @@
         [
           {
             "caption": "S2 XML LOG",
-            "command": "formatlog-s2"
+            "command": "formatlog"
           }
         ]
       }
